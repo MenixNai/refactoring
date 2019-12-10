@@ -8,22 +8,23 @@ import java.util.Vector;
  * @author aluno
  */
 public class Customer {
-    
-private String _name;
-   private Vector _rentals = new Vector();
 
-   public Customer (String name){
-      _name = name;
-   }
+    private String _name;
+    private Vector _rentals = new Vector();
 
-   public void addRental(Rental arg) {
-      _rentals.addElement(arg);
-   }
-   public String getName (){
-      return _name;
-   }
-  
-   public String statement() {
+    public Customer(String name) {
+        _name = name;
+    }
+
+    public void addRental(Rental arg) {
+        _rentals.addElement(arg);
+    }
+
+    public String getName() {
+        return _name;
+    }
+
+    public String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
         Enumeration rentals = _rentals.elements();
@@ -31,7 +32,7 @@ private String _name;
         while (rentals.hasMoreElements()) {
 
             Rental each = (Rental) rentals.nextElement();
-            double thisAmount = amountFor(each);
+            double thisAmount = each.getCharge();
 
             // add frequent renter points
             frequentRenterPoints++;
